@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vietnamese Phone Number</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>Vietnamese Phone Number</h1>
+<!--   <button id="generate"> Random Number</button>
+  <p id="phoneNumber"></p> -->
+
+  <button id="generateNumbers">Generate Numbers</button>
+    <ul id="phoneNumberList"></ul>
+    <script type="text/javascript">
+        // Function to generate a random Vietnamese phone number with "098" or "087" prefix
+function generateRandomVietnamesePhoneNumber() {
+    const prefixes = ["081", "098", "088","097","096", "032","033","094","070","077"];
+    const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+    const randomNumber = Math.floor(Math.random() * 1000000000).toString().padStart(9, '0');
+    return prefix + randomNumber;
+}
+
+// Function to generate 20 unique random Vietnamese phone numbers
+function generateUniquePhoneNumbers(count) {
+    const phoneNumbers = new Set();
+    
+    while (phoneNumbers.size < count) {
+        const phoneNumber = generateRandomVietnamesePhoneNumber();
+        phoneNumbers.add(phoneNumber);
+    }
+
+    return Array.from(phoneNumbers);
+}
+
+$(document).ready(function() {
+    $('#generateNumbers').click(function() {
+        const phoneNumberList = generateUniquePhoneNumbers(20);
+        const $phoneNumberList = $('#phoneNumberList');
+
+        $phoneNumberList.empty(); // Clear previous numbers
+
+        // Display the generated phone numbers in a list
+        phoneNumberList.forEach(function(phoneNumber) {
+            $phoneNumberList.append('<li>' + phoneNumber + '</li>');
+        });
+    });
+});
+
+    </script>
+<!--   <script>
+    function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function generatePhoneNumber() {
+      const prefixes = ["081", "098", "088","097","096", "032","033","094","070","077"];
+      const randomPrefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+      let phoneNumber = randomPrefix;
+      for (let i = 0; i < 7; i++) {
+        let digit = getRandomNumber(0, 9);
+        // Ensure that no two consecutive digits are the same
+        while (i > 0 && digit === parseInt(phoneNumber.charAt(i - 1))) {
+          digit = getRandomNumber(0, 9);
+        }
+        phoneNumber += digit;
+      }
+      return phoneNumber;
+    }
+    $(document).ready(function() {
+      $("#generate").click(function() {
+        const phoneNumber = generatePhoneNumber();
+        $("#phoneNumber").text("Generated Phone Number: " + phoneNumber);
+      });
+    });
+  </script> -->
+</body>
+</html>
