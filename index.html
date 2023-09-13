@@ -16,7 +16,7 @@
   <script>
     // Function to generate a random Vietnamese phone number with 10 digits
     function generateRandomPhoneNumber() {
-      const operators = ["087", "098"];
+      const operators = ["081", "098", "088","097","096", "032","033","094","070","077"];
       const randomOperator = operators[Math.floor(Math.random() * operators.length)];
       const randomNumber = Math.floor(10000000 + Math.random() * 90000000); // Generates a 10-digit number
       return randomOperator + randomNumber.toString().slice(1); // Ensure exactly 10 digits
